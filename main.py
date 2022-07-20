@@ -139,3 +139,31 @@ print(lecturer_2 > lecturer_1)
 print(student_1)
 print(lecturer_1)
 print(reviewer_2)
+
+
+def students_average_grade(students: list, course):
+    average_grade = []
+    for student in students:
+        if course in student.grades:
+            grades_list = list(student.grades.values())
+            all_grades = list(map(int, chain.from_iterable(grades_list)))
+            local_grade = round(sum(all_grades) / len(all_grades), 1)
+            average_grade.append(local_grade)
+    if average_grade != []:
+        return sum(average_grade) / len(average_grade)
+
+
+def lecturers_average_grade(lecturers: list, course):
+    average_grade = []
+    for lecturer in lecturers:
+        if course in lecturer.grades:
+            grades_list = list(lecturer.grades.values())
+            all_grades = list(map(int, chain.from_iterable(grades_list)))
+            local_grade = round(sum(all_grades) / len(all_grades), 1)
+            average_grade.append(local_grade)
+    if average_grade != []:
+        return sum(average_grade) / len(average_grade)
+
+
+print(students_average_grade([student_1, student_2], 'algebra'))
+print(lecturers_average_grade([lecturer_1, lecturer_2], 'english'))
